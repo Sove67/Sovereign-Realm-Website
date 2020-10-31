@@ -4,26 +4,310 @@
 <head>
     <title>Home</title>
     <meta charset="utf-8" />
+    <meta name="author" content="Sove67">
+
     <style>
-        /* Base */
+        /* Global */
         body {
             background-color: gainsboro;
             font-size: 1.5vw;
-            font-family: fantasy
+            font-family: fantasy;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .contentType>* {
+            display: list-item;
+            list-style: none;
+        }
+        /* Landscape */
+        @media screen and (min-aspect-ratio: 1001/1000) {
+
+            /* Landscape and Not Mobile*/
+            main {
+                width: calc(100vw - 150px);
+                position: relative;
+                left: 150px;
+            }
+
+            #sidebar {
+                grid-template-rows: 20% 60% 20%;
+                position: fixed;
+                width: 150px;
+                height: 100vh;
+            }
+
+            #sidebar>nav .icon {
+                width: 50%;
+                height: auto;
+            }
+
+            main {
+                grid-column: 2/3;
+            }
+
+            #welcome {
+                display: grid;
+                grid-template-columns: 66% 33%;
+            }
+
+            #intro {
+                grid-column: 1/2;
+            }
+
+            #getStarted {
+                grid-column: 2/3;
+            }
+
+            #content {
+                display: grid;
+                grid-template-columns: 33% 33% 33%;
+            }
+
+            #projects {
+                grid-column: 1/2;
+            }
+
+            #patreon {
+                grid-column: 2/3;
+            }
+
+            #auctions {
+                grid-column: 3/4;
+            }
+        }
+
+        /* Portrait */
+        @media screen and (max-aspect-ratio: 1/1) {
+            main {
+                position: relative;
+                top: 150px;
+            }
+
+            #sidebar {
+                position: fixed;
+                width: 100vw;
+                height: 150px;
+
+                display: grid;
+                grid-template-columns: 20% 60% 20%;
+            }
+
+            #sidebar>nav {
+                display: grid;
+                justify-content: center;
+                grid-template-columns: 20% 20% 20% 20% 20%;
+            }
+
+            #sidebar>nav .icon {
+                height: 50%;
+                width: auto;
+            }
+
+            #profile {
+                display: grid;
+                justify-content: center;
+                grid-template-rows: 70% 30%;
+            }
+
+            #profile img {
+                width: auto;
+                height: 100%;
+            }
+
+            #welcome {
+                display: inline;
+            }
+
+            #content {
+                display: grid;
+                grid-template-columns: 33% 33% 33%;
+            }
+
+            #projects {
+                grid-column: 1/2;
+            }
+
+            #patreon {
+                grid-column: 2/3;
+            }
+
+            #auctions {
+                grid-column: 3/4;
+            }
+
+        }
+
+        @media screen and (max-width: 600px) {
+            p {
+                color: red;
+            }
         }
     </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
-    <!-- The core Firebase JS SDK is always required and must be listed first -->
-	<script src="/__/firebase/8.0.0/firebase-app.js"></script>
-	
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="/__/firebase/8.0.0/firebase-analytics.js"></script>
+    <div id="sidebar">
+        <button id="navChatSwapper" class="icon">
+            <img src="https://dummyimage.com/200x200/000/fff" alt="Logo" />
+        </button>
+        <nav>
+            <a href="">
+                <img id="homeIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Home" />
+            </a>
+            <a href="">
+                <img id="projectIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Projects" />
+            </a>
+            <a id="patreonNav" href="">
+                <img id="patreonIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Patreons" />
+            </a>
+            <a href="">
+                <img id="shopIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Shop" />
+            </a>
+            <a href="">
+                <img id="FAQIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="FAQ" />
+            </a>
+        </nav>
 
-    <!-- Initialize Firebase -->
+        <a id="profile">
+            <img src="https://dummyimage.com/100x100/000/fff" alt="FAQ" />
+            <label>Username</label>
+            <!-- Popup
+            <div>
+                <h1>Username</h1>
+                <span id="patreonTier"></span>
+                <span id="interests"></span>
+                <span id="expertise"></span>
+                <span id="notifications"></span>
+            </div>
+            -->
+        </a>
+    </div>
+    <main>
+        <section id="welcome">
+            <h1>Welcome</h1>
+            <div id="intro">
+                <h2>Intro</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec faucibus pulvinar tortor, sed iaculis dui sagittis a.
+                    Maecenas condimentum porta libero, non maximus est
+                    sollicitudin eget. Donec dui odio, tristique sit amet augue
+                    at, luctus venenatis ex.
+                    <br />
+                    <br />
+                    Praesent nec euismod metus, non laoreet velit. Curabitur
+                    vulputate felis ac felis facilisis, et molestie nibh semper.
+                    Maecenas eget volutpat massa, a consequat ante. Nullam vitae
+                    ante eu quam posuere interdum sit amet nec felis. In at
+                    ornare nisl. Duis ante orci, viverra non eros venenatis,
+                    ullamcorper scelerisque nulla. Aliquam erat volutpat. Mauris
+                    eget suscipit tortor.
+                </p>
+            </div>
+            <div id="getStarted">
+                <h2>Getting Started</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec faucibus pulvinar tortor, sed iaculis dui sagittis a.
+                    Maecenas condimentum porta libero, non maximus est
+                    sollicitudin eget. Donec dui odio, tristique sit amet augue
+                    at, luctus venenatis ex.
+                </p>
+            </div>
+        </section>
+        <section id="content">
+            <h1>Content</h1>
+            <article id="projects" class="contentType">
+                <h2><a class="heading" href="">Projects</a></h2>
+                <span class="stats">x Projects</span>
+                <span class="stats">x Hours of Video</span>
+                <h3>Featured Project</h3>
+                <a href="">
+                    <article>
+                        <img src="https://dummyimage.com/600x400/000/fff" alt="Featured Video" />
+                        <label>Project Title</label>
+                    </article>
+                </a>
+            </article>
+            <article id="patreon" class="contentType">
+                <h2><a class="heading" href="">Patreon</a></h2>
+                <span class="stats">x Patreons</span>
+                <span class="stats">x Hours of Exclusive Content</span>
+                <a href="">
+                    <div>
+                        <h3>Aristocrat Tier</h3>
+                        <ul>
+                            <lh>Features</lh>
+                            <li>Extra Discord Features</li>
+                            <li>Extra Realm Account Features</li>
+                            <li>Early Video Access on Realm</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <h3>Noble Tier</h3>
+                        <ul>
+                            <lh>Features</lh>
+                            <li>Aristocrat Features</li>
+                            <li>Extra Content on Realm</li>
+                            <li>Project Suggestions & Voting</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <h3>Sovereign Tier</h3>
+                        <ul>
+                            <lh>Features</lh>
+                            <li>Aristocrat Features</li>
+                            <li>Noble Features</li>
+                            <li>Access to project help in the Sovereign Community</li>
+                            <li>Personal Discord Call with Sove67</li>
+                        </ul>
+                    </div>
+                </a>
+            </article>
+            <article id="shop" class="contentType">
+                <h2><a class="heading" href="">Shop</a></h2>
+                <span class="stats">x Auctions</span>
+                <span class="stats">x Products</span>
+                <h3>Featured Item</h3>
+                <a href="">
+                    <article>
+                        <img src="https://dummyimage.com/600x400/000/fff" alt="Featured Video" />
+                        <label>Project Title</label>
+                    </article>
+                </a>
+            </article>
+        </section>
+    </main>
+    <!--------->
+    <!-- API -->
+    <!--------->
+
+    <!-- Firebase -->
+    <script src="/__/firebase/8.0.0/firebase-app.js"></script>
+    <script src="/__/firebase/8.0.0/firebase-analytics.js"></script>
     <script src="/__/firebase/init.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

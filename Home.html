@@ -7,186 +7,284 @@
     <meta name="author" content="Sove67">
 
     <style>
-        /* Global */
-        body {
-            background-color: gainsboro;
-            font-size: 1.5vw;
-            font-family: fantasy;
-        }
+        @media screen {
 
-        img {
-            width: 100%;
-            height: auto;
-        }
-
-        .contentType>* {
-            display: list-item;
-            list-style: none;
-        }
-        /* Landscape */
-        @media screen and (min-aspect-ratio: 1001/1000) {
-
-            /* Landscape and Not Mobile*/
-            main {
-                width: calc(100vw - 150px);
+            /* Global */
+            body {
+                font-size: 20px;
+                padding: 0;
+                margin: 0;
+                font-family: fantasy;
+                overflow: hidden;
                 position: relative;
-                left: 150px;
-            }
-
-            #sidebar {
-                grid-template-rows: 20% 60% 20%;
-                position: fixed;
-                width: 150px;
                 height: 100vh;
+                width: 100vw;
             }
 
-            #sidebar>nav .icon {
-                width: 50%;
+            main {
+                overflow-y: scroll;
+                background-color: #332D3F;
+                color: #c8afd7;
+            }
+
+            img {
+                display: inline-block;
+                max-height: 100%;
+                max-width: 100%;
                 height: auto;
+                width: auto;
             }
 
-            main {
-                grid-column: 2/3;
+            button,
+            a {
+                background-color: #b4ded5;
+                padding: 10px;
+                border-radius: 10px;
+                color: #332D3F;
+                text-decoration: none;
             }
 
-            #welcome {
-                display: grid;
-                grid-template-columns: 66% 33%;
+            button:hover,
+            a:hover {
+                background-color: #38cfad;
+                text-decoration: none;
             }
 
-            #intro {
-                grid-column: 1/2;
+            #navChatSwapper {
+                border: none;
+                display: inline;
             }
 
-            #getStarted {
-                grid-column: 2/3;
-            }
-
-            #content {
-                display: grid;
-                grid-template-columns: 33% 33% 33%;
-            }
-
-            #projects {
-                grid-column: 1/2;
-            }
-
-            #patreon {
-                grid-column: 2/3;
-            }
-
-            #auctions {
-                grid-column: 3/4;
-            }
-        }
-
-        /* Portrait */
-        @media screen and (max-aspect-ratio: 1/1) {
-            main {
-                position: relative;
-                top: 150px;
+            #navContainer {
+                padding: 10px;
+                margin: 10px;
             }
 
             #sidebar {
-                position: fixed;
-                width: 100vw;
-                height: 150px;
-
-                display: grid;
-                grid-template-columns: 20% 60% 20%;
+                background-color: #332D3F;
             }
 
-            #sidebar>nav {
-                display: grid;
-                justify-content: center;
-                grid-template-columns: 20% 20% 20% 20% 20%;
-            }
-
-            #sidebar>nav .icon {
-                height: 50%;
+            #sidebar img {
+                height: auto;
                 width: auto;
+            }
+
+            #dropdownIcon {
+                position: relative;
+                top: 50%;
+                left: 50%;
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%);
+            }
+
+            #sidebar>nav .current {
+                background-color: #38cfad;
             }
 
             #profile {
                 display: grid;
                 justify-content: center;
-                grid-template-rows: 70% 30%;
+                align-content: center;
+                grid-template-rows: auto 2em;
+                text-align: center;
             }
 
             #profile img {
+                justify-self: center;
+                display: inline-block;
+                max-height: 100%;
+                max-width: 100%;
+                height: auto;
                 width: auto;
-                height: 100%;
+                border-radius: 50%;
+                border-style: solid;
+                border-color: grey;
             }
 
-            #welcome {
-                display: inline;
+            #profile label {
+                position: relative;
+                top: .5em;
             }
 
-            #content {
-                display: grid;
-                grid-template-columns: 33% 33% 33%;
+            .contentType>* {
+                display: list-item;
+                list-style: none;
             }
 
-            #projects {
-                grid-column: 1/2;
+            /* Landscape */
+            @media not screen and (max-aspect-ratio: 1) {
+                :root {
+                    --sidebarWidth: min(min(15vw, calc((100vh - 2 * 5vh) / 3)), 150px);
+                }
+
+                body {
+                    position: fixed;
+                    display: grid;
+                    grid-template-columns: var(--sidebarWidth) minmax(0, 1fr);
+                    grid-template-rows: 100%;
+                }
+
+                #sidebar {
+                    height: 100%;
+                    width: 100%;
+                    display: grid;
+                    justify-content: center;
+                    align-content: center;
+                    grid-template-columns: 100%;
+                    grid-template-rows: var(--sidebarWidth) minmax(0, 1fr) var(--sidebarWidth);
+                }
+
+                #navContainer nav {
+                    display: grid;
+                    align-content: space-between;
+                    height: 100%;
+                }
+
+                #navContainer nav a {
+                    justify-self: center;
+                    width: 50%;
+                }
+
+                #dropdownExpanded {
+                    display: grid;
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    height: 100vh;
+                    align-content: space-between;
+                }
+
+                main {
+                    grid-column: 2/3;
+                }
+
+                #welcome {
+                    display: grid;
+                    grid-template-columns: 66% 33%;
+                }
+
+                #intro {
+                    grid-column: 1/2;
+                }
+
+                #getStarted {
+                    grid-column: 2/3;
+                }
+
+                #content {
+                    display: grid;
+                    grid-template-columns: 33% 33% 33%;
+                }
+
+                #projects {
+                    grid-column: 1/2;
+                }
+
+                #patreon {
+                    grid-column: 2/3;
+                }
+
+                #auctions {
+                    grid-column: 3/4;
+                }
             }
 
-            #patreon {
-                grid-column: 2/3;
-            }
+            /* Portrait */
+            @media screen and (max-aspect-ratio: 1) {
+                :root {
+                    --sidebarHeight: min(min(15vh, calc((100vw - 2 * 5vw) / 3)), 150px);
+                }
 
-            #auctions {
-                grid-column: 3/4;
-            }
+                body {
+                    position: fixed;
+                    display: grid;
+                    grid-template-rows: var(--sidebarHeight) minmax(0, 1fr);
+                    grid-template-columns: 100%;
+                }
 
-        }
+                #sidebar {
+                    height: 100%;
+                    width: 100%;
+                    display: grid;
+                    grid-template-rows: 100%;
+                    grid-template-columns: var(--sidebarHeight) minmax(0, 1fr) var(--sidebarHeight);
+                }
 
-        @media screen and (max-width: 600px) {
-            p {
-                color: red;
+                #navContainer nav {
+                    max-height: 100%;
+                    max-width: 100%;
+                    height: 100%;
+                    display: grid;
+                    align-content: center;
+                    justify-content: space-between;
+                }
+
+                #navContainer nav a {
+                    text-align: center;
+                }
+
+                #content {
+                    display: grid;
+                    grid-template-columns: 33% 33% 33%;
+                }
+
+                #projects {
+                    grid-column: 1/2;
+                }
+
+                #patreon {
+                    grid-column: 2/3;
+                }
+
+                #auctions {
+                    grid-column: 3/4;
+                }
             }
         }
     </style>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 
 <body>
     <div id="sidebar">
-        <button id="navChatSwapper" class="icon">
-            <img src="https://dummyimage.com/200x200/000/fff" alt="Logo" />
+        <button id="navChatSwapper">
+            <img src="https://dummyimage.com/300x300/000/fff" alt="Logo" />
         </button>
-        <nav>
-            <a href="">
-                <img id="homeIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Home" />
-            </a>
-            <a href="">
-                <img id="projectIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Projects" />
-            </a>
-            <a id="patreonNav" href="">
-                <img id="patreonIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Patreons" />
-            </a>
-            <a href="">
-                <img id="shopIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="Shop" />
-            </a>
-            <a href="">
-                <img id="FAQIcon" class="icon" src="https://dummyimage.com/100x100/000/fff" alt="FAQ" />
-            </a>
-        </nav>
-
+        <div id="navContainer">
+            <img id="dropdownIcon" src="https://dummyimage.com/100x100/000/fff" alt="Dropdown" />
+            <nav>
+                <a href="">
+                    <img id="homeIcon" src="https://dummyimage.com/100x100/000/fff" alt="Home" />
+                </a>
+                <a href="">
+                    <img id="projectIcon" src="https://dummyimage.com/100x100/000/fff" alt="Projects" />
+                </a>
+                <a id="patreonNav" href="">
+                    <img id="patreonIcon" src="https://dummyimage.com/100x100/000/fff" alt="Patreons" />
+                </a>
+                <a href="">
+                    <img id="shopIcon" src="https://dummyimage.com/100x100/000/fff" alt="Shop" />
+                </a>
+                <a href="">
+                    <img id="FAQIcon" src="https://dummyimage.com/100x100/000/fff" alt="FAQ" />
+                </a>
+            </nav>
+        </div>
         <a id="profile">
-            <img src="https://dummyimage.com/100x100/000/fff" alt="FAQ" />
+            <img src="https://dummyimage.com/300x300/000/fff" alt="FAQ" />
             <label>Username</label>
-            <!-- Popup
-            <div>
-                <h1>Username</h1>
-                <span id="patreonTier"></span>
-                <span id="interests"></span>
-                <span id="expertise"></span>
-                <span id="notifications"></span>
-            </div>
-            -->
+
+            <!--
+                Popup
+                <div>
+                    <h1>Username</h1>
+                    <span id="patreonTier"></span>
+                    <span id="interests"></span>
+                    <span id="expertise"></span>
+                    <span id="notifications"></span>
+                </div>-->
+
         </a>
     </div>
     <main>
@@ -226,8 +324,8 @@
             <h1>Content</h1>
             <article id="projects" class="contentType">
                 <h2><a class="heading" href="">Projects</a></h2>
-                <span class="stats">x Projects</span>
-                <span class="stats">x Hours of Video</span>
+                <span class="stats">x</span> Projects
+                <span class="stats">x</span> Hours of Video
                 <h3>Featured Project</h3>
                 <a href="">
                     <article>
@@ -238,8 +336,8 @@
             </article>
             <article id="patreon" class="contentType">
                 <h2><a class="heading" href="">Patreon</a></h2>
-                <span class="stats">x Patreons</span>
-                <span class="stats">x Hours of Exclusive Content</span>
+                <span class="stats">x</span> Patreons
+                <span class="stats">x</span> Hours of Exclusive Content
                 <a href="">
                     <div>
                         <h3>Aristocrat Tier</h3>
@@ -277,8 +375,8 @@
             </article>
             <article id="shop" class="contentType">
                 <h2><a class="heading" href="">Shop</a></h2>
-                <span class="stats">x Auctions</span>
-                <span class="stats">x Products</span>
+                <span class="stats">x</span> Auctions
+                <span class="stats">x</span> Products
                 <h3>Featured Item</h3>
                 <a href="">
                     <article>
@@ -289,6 +387,84 @@
             </article>
         </section>
     </main>
+    <script>
+        /*<![CDATA[*/
+        $(document).ready(function () {
+            var isPortrait = window.matchMedia("(max-aspect-ratio: 1)");
+            let itemWidth;
+            updateNavGrid(isPortrait);
+            isPortrait.addListener(updateNavGrid);
+
+            /* get nav gap */
+            function getNavGap() {
+                let paddingMargin = 40;
+                if (isPortrait.matches) {
+                    let columnString = $("#sidebar").css("grid-template-columns");
+                    let secondColumnSize = parseFloat(columnString.split(" ")[1]) - paddingMargin;
+                    return secondColumnSize - (itemWidth * 5);
+                } else {
+                    let rowString = $("#sidebar").css("grid-template-rows");
+                    let secondRowSize = parseFloat(rowString.split(" ")[1]) - paddingMargin;
+                    return secondRowSize - (itemWidth * 5);
+                }
+            }
+
+            function updateNavGrid(isPortrait) {
+                if (isPortrait.matches) {
+                    itemWidth = parseFloat($("#navContainer").css("height")) * .75;
+                    let section = itemWidth + "px "
+                    $("#navContainer>nav").css("grid-template-columns", section + section + section + section + section);
+                    $("#navContainer>nav").css("grid-template-rows", "");
+                } else {
+                    itemWidth = parseFloat($("#navContainer").css("width")) * .75;
+                    let section = itemWidth + "px "
+                    $("#navContainer>nav").css("grid-template-columns", "");
+                    $("#navContainer>nav").css("grid-template-rows", section + section + section + section + section);
+                }
+            }
+
+            /* Collapse Nav */
+            onResize();
+            window.addEventListener("resize", onResize);
+            function onResize() {
+                console.log("resized");
+                if (getNavGap() < 0) {
+                    $("#dropdownIcon").css("display", "inline");
+                    $("#navContainer>nav").css("display", "none");
+                } else {
+                    $("#dropdownIcon").css("display", "none");
+                    $("#navContainer>nav").css("display", "grid");
+                }
+            }
+
+            /* Open Nav */
+            $("#dropdownIcon").hover(
+                function () {
+                    console.log("hovered");
+                    $("#navContainer>nav").css("display", "grid");
+                    $("#navContainer>nav").addClass("dropdownExpanded");
+                },
+                function () {
+                    $("#navContainer>nav").css("display", "none");
+                    $("#navContainer>nav").removeClass("dropdownExpanded");
+                }
+            );
+
+            /* Hide Scroll Bar */
+            $("main").css("overflow", "scroll");
+            let mainMargin = parseFloat($("main").css("margin"));
+            let mainPadding = parseFloat($("main").css("padding"));
+            $("main").css("margin-right", -100 + "px");
+            $("main").css("padding-right", 100 + "px");
+            $("main").css("margin-bottom", -100 + "px");
+            $("main").css("padding-bottom", 100 + "px");
+
+            /* Ratio Profile Text */
+            $("#profile").css("font-size", parseFloat($("#profile").css("height")) * .2);
+        });
+        /*]]>*/
+    </script>
+
     <!--------->
     <!-- API -->
     <!--------->

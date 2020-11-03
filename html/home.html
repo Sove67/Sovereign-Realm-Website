@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Home</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Sove67">
+    <link rel="shortcut icon" href="">
+
+    <!-- jQuery Initialization-->
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+
+    <!-- Firebase CSS -->
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+    <!-- Custom CSS -->
+    <link type="text/css" rel="stylesheet" href="../style/home.css" />
+
+    <!-- Loading site wide .html Files | Source: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file?page=1&tab=votes#tab-top -->
+    <script>
+        $(document).ready(function () {
+            /**/var htmlImport = $('[import-html]');
+            jQuery.each(htmlImport, function () {
+                var file = '../siteWide/html/' + $(this).attr('id') + '.html';
+                $(this).load(file);
+            });
+            var jsImport = $('[import-js]');
+            jQuery.each(jsImport, function () {
+                var scriptPath = '../siteWide/script/' + $(this).attr('id') + '.js';
+                $("body").append("<script src=\"" + scriptPath + "\"><\/script>");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div import-html import-js id="sidebar"></div>
+    <main>
+        <section id="welcome">
+            <h1>Welcome</h1>
+            <div id="intro">
+                <h2>Intro</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec faucibus pulvinar tortor, sed iaculis dui sagittis a.
+                    Maecenas condimentum porta libero, non maximus est
+                    sollicitudin eget. Donec dui odio, tristique sit amet augue
+                    at, luctus venenatis ex.
+                    <br />
+                    <br />
+                    Praesent nec euismod metus, non laoreet velit. Curabitur
+                    vulputate felis ac felis facilisis, et molestie nibh semper.
+                    Maecenas eget volutpat massa, a consequat ante. Nullam vitae
+                    ante eu quam posuere interdum sit amet nec felis. In at
+                    ornare nisl. Duis ante orci, viverra non eros venenatis,
+                    ullamcorper scelerisque nulla. Aliquam erat volutpat. Mauris
+                    eget suscipit tortor.
+                </p>
+            </div>
+            <div id="getStarted">
+                <h2>Getting Started</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Donec faucibus pulvinar tortor, sed iaculis dui sagittis a.
+                    Maecenas condimentum porta libero, non maximus est
+                    sollicitudin eget. Donec dui odio, tristique sit amet augue
+                    at, luctus venenatis ex.
+                </p>
+            </div>
+        </section>
+        <section id="content">
+            <h1>Content</h1>
+            <article id="projects" class="contentType">
+                <h2><a class="heading" href="">Projects</a></h2>
+                <span class="stats">x</span> Projects
+                <span class="stats">x</span> Hours of Video
+                <h3>Featured Project</h3>
+                <a href="">
+                    <article>
+                        <img src="https://dummyimage.com/600x400/000/fff" alt="Featured Video" />
+                        <label>Project Title</label>
+                    </article>
+                </a>
+            </article>
+            <article id="patreon" class="contentType">
+                <h2><a class="heading" href="">Patreon</a></h2>
+                <span class="stats">x</span> Patreons
+                <span class="stats">x</span> Hours of Exclusive Content
+                <a href="">
+                    <div>
+                        <h3>Aristocrat Tier</h3>
+                        <ul>
+                            <lh>Features</lh>
+                            <li>Extra Discord Features</li>
+                            <li>Extra Realm Account Features</li>
+                            <li>Early Video Access on Realm</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <h3>Noble Tier</h3>
+                        <ul>
+                            <lh>Features</lh>
+                            <li>Aristocrat Features</li>
+                            <li>Extra Content on Realm</li>
+                            <li>Project Suggestions & Voting</li>
+                        </ul>
+                    </div>
+                </a>
+                <a href="">
+                    <div>
+                        <h3>Sovereign Tier</h3>
+                        <ul>
+                            <lh>Features</lh>
+                            <li>Aristocrat Features</li>
+                            <li>Noble Features</li>
+                            <li>Access to project help in the Sovereign Community</li>
+                            <li>Personal Discord Call with Sove67</li>
+                        </ul>
+                    </div>
+                </a>
+            </article>
+            <article id="shop" class="contentType">
+                <h2><a class="heading" href="">Shop</a></h2>
+                <span class="stats">x</span> Auctions
+                <span class="stats">x</span> Products
+                <h3>Featured Item</h3>
+                <a href="">
+                    <article>
+                        <img src="https://dummyimage.com/600x400/000/fff" alt="Featured Video" />
+                        <label>Project Title</label>
+                    </article>
+                </a>
+            </article>
+        </section>
+
+        <!-- This is where the Login Widget will go -->
+        <h1 id="firebaseui-auth-container"></h1>
+
+    </main>
+
+    <!-- API -->
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+    <!-- Firebase Libraries-->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+
+    <!-- Your own Firebase API key information -->
+    <script src="../firebase/firebaseApi.js"> </script>\
+</body>
+
+</html>

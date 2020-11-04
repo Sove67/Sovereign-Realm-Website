@@ -1,0 +1,42 @@
+@media screen {
+    /* Global */
+    body {
+        font-size: 20px;
+        padding: 0;
+        margin: 0;
+        font-family: fantasy;
+        overflow: hidden;
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+    }
+
+    main {
+        overflow-y: scroll;
+        background-color: #332D3F;
+        color: #c8afd7;
+    }
+
+    img {
+        display: inline-block;
+        max-height: 100%;
+        max-width: 100%;
+        height: auto;
+        width: auto;
+    }
+
+    button,
+    a {
+        background-color: #b4ded5;
+        padding: 10px;
+        border-radius: 10px;
+        color: #332D3F;
+        text-decoration: none;
+    }
+
+    button:hover,
+    a:hover {
+        background-color: #38cfad;
+        text-decoration: none;
+    }
+}

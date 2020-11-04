@@ -1,134 +1,137 @@
-#navChatSwapper {
-    border: none;
-    display: inline;
-}
-
-#navContainer {
-    padding: 10px;
-    margin: 10px;
-}
-
-#navContainer .current {
-    background-color: #38cfad;
-}
-
-#sidebar {
-    background-color: #332D3F;
-}
-
-#sidebar img {
-    height: auto;
-    width: auto;
-}
-
-#dropdownIcon {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-
-
-.dropdownExpanded {
-    background-color: #332D3F;
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100vh;
-    align-content: space-between;
-}
-
-#profile {
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-template-rows: auto 2em;
-    text-align: center;
-}
-
-#profile img {
-    justify-self: center;
-    display: inline-block;
-    max-height: 100%;
-    max-width: 100%;
-    height: auto;
-    width: auto;
-    border-radius: 50%;
-    border-style: solid;
-    border-color: grey;
-}
-
-#profile span {
-    margin: .5em;
-}
-
-/* Landscape */
-@media not screen and (max-aspect-ratio: 1) {
-    :root {
-        --sidebarWidth: min(min(15vw, calc((100vh - 2 * 5vh) / 3)), 150px);
-    }
-
-    body {
-        position: fixed;
-        display: grid;
-        grid-template-columns: var(--sidebarWidth) minmax(0, 1fr);
-        grid-template-rows: 100%;
-    }
-
+@media screen {
     #sidebar {
-        height: 100%;
-        width: 100%;
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        grid-template-columns: 100%;
-        grid-template-rows: var(--sidebarWidth) minmax(0, 1fr) var(--sidebarWidth);
+        background-color: #332D3F;
     }
 
-    #navContainer nav {
-        display: grid;
-        align-content: space-between;
-        height: 100%;
+    #sidebar img {
+        height: auto;
+        width: auto;
+    }
+
+    #navChatSwapper {
+        border: none;
+        display: inline;
+    }
+
+    #navContainer .current {
+        background-color: #38cfad;
     }
 
     #navContainer nav a {
         justify-self: center;
-        width: 50%;
-    }
-}
-
-/* Portrait */
-@media screen and (max-aspect-ratio: 1) {
-    :root {
-        --sidebarHeight: min(min(15vh, calc((100vw - 2 * 5vw) / 3)), 150px);
+        text-align: center;
+        width: 32px;
+        height: 32px;
+        padding: 10px;
     }
 
-    body {
+    #dropdownIcon {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .dropdownExpanded {
+        background-color: #332D3F;
         position: fixed;
-        display: grid;
-        grid-template-rows: var(--sidebarHeight) minmax(0, 1fr);
-        grid-template-columns: 100%;
+        left: 0;
+        top: 0;
     }
 
-    #sidebar {
-        height: 100%;
-        width: 100%;
+    #profile {
         display: grid;
-        grid-template-rows: 100%;
-        grid-template-columns: var(--sidebarHeight) minmax(0, 1fr) var(--sidebarHeight);
+        justify-content: center;
+        align-content: center;
+        grid-template-rows: auto 1.5em;
+        text-align: center;
     }
 
-    #navContainer nav {
+    #profile img {
+        justify-self: center;
+        display: inline-block;
         max-height: 100%;
         max-width: 100%;
-        height: 100%;
-        display: grid;
-        align-content: center;
-        justify-content: space-between;
+        height: auto;
+        width: auto;
+        border-radius: 50%;
+        border-style: solid;
+        border-color: grey;
     }
 
-    #navContainer nav a {
-        text-align: center;
+    #profile span {
+        width: 100%;
+        margin: auto;
+    }
+
+    /* Landscape */
+    @media not screen and (max-aspect-ratio: 1) {
+        :root {
+            --sidebarWidth: min(min(15vw, calc((100vh - 2 * 5vh) / 3)), 128px);
+        }
+
+        body {
+            position: fixed;
+            display: grid;
+            grid-template-columns: var(--sidebarWidth) minmax(0, 1fr);
+            grid-template-rows: 100%;
+        }
+
+        #sidebar {
+            height: 100%;
+            width: var(--sidebarWidth);
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            grid-template-columns: 100%;
+            grid-template-rows: var(--sidebarWidth) minmax(0, 1fr) var(--sidebarWidth);
+        }
+
+        #navContainer nav {
+            display: grid;
+            align-content: space-around;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .dropdownExpanded {
+            width: var(--sidebarWidth) !important;
+            height: 100vh !important;
+        }
+    }
+
+    /* Portrait */
+    @media screen and (max-aspect-ratio: 1) {
+        :root {
+            --sidebarHeight: min(calc((100vw - 2 * 5vw) / 3), 128px);
+        }
+
+        body {
+            position: fixed;
+            display: grid;
+            grid-template-rows: var(--sidebarHeight) minmax(0, 1fr);
+            grid-template-columns: 100%;
+        }
+
+        #sidebar {
+            height: var(--sidebarHeight);
+            width: 100%;
+            display: grid;
+            grid-template-rows: 100%;
+            grid-template-columns: var(--sidebarHeight) minmax(0, 1fr) var(--sidebarHeight);
+        }
+
+        #navContainer nav {
+            height: 100%;
+            display: grid;
+            align-content: center;
+            justify-content: space-around;
+        }
+
+        .dropdownExpanded {
+            width: 100vw !important;
+            height: var(--sidebarHeight) !important;
+        }
     }
 }

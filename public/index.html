@@ -55,6 +55,16 @@
         var file = 'siteWide/html/' + $(this).attr('id') + '.html';
         $(this).load(file);
       });
+      var cssImport = $('[import-css]');
+      jQuery.each(cssImport, function () {
+        var cssLink = $("<link>");
+        $("head").append(cssLink); //IE hack: append before setting href
+        cssLink.attr({
+          rel: "stylesheet",
+          type: "text/css",
+          href: 'siteWide/style/' + $(this).attr('id') + '.css'
+        });
+      });
       var jsImport = $('[import-js]');
       jQuery.each(jsImport, function () {
         var scriptPath = 'siteWide/script/' + $(this).attr('id') + '.js';
@@ -66,8 +76,8 @@
 </head>
 
 <body>
-  <div import-html import-js id="sidebar"></div>
-  <main>
+  <div import-html import-css import-js id="sidebar"></div>
+  <main id="test">
     <section id="welcome">
       <h1>Welcome</h1>
       <div id="intro">
@@ -110,7 +120,7 @@
         <a href="">
           <article>
             <img src="https://dummyimage.com/600x400/000/fff" alt="Featured Video" />
-            <label>Project Title</label>
+            <span>Project Title</span>
           </article>
         </a>
       </article>
@@ -161,7 +171,7 @@
         <a href="">
           <article>
             <img src="https://dummyimage.com/600x400/000/fff" alt="Featured Video" />
-            <label>Project Title</label>
+            <span>Project Title</span>
           </article>
         </a>
       </article>

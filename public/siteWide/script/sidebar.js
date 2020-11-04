@@ -10,16 +10,7 @@ $(document).ready(function () {
         // Adaptive Listeners
         isPortrait.addListener(updateNavGrid);
         window.addEventListener("resize", onResize);
-        $("#dropdownIcon").hover(
-            function () {
-                $("#navContainer>nav").css("display", "grid");
-                $("#navContainer>nav").addClass("dropdownExpanded");
-            },
-            function () {
-                $("#navContainer>nav").css("display", "none");
-                $("#navContainer>nav").removeClass("dropdownExpanded");
-            }
-        );
+        $("#dropdownIcon").mouseenter(hoverDropdown); //mouseleave is declared alongside the .addClass point.
 
         hideScrollBar();
 
@@ -45,6 +36,7 @@ $(document).ready(function () {
     function onResize() {
         if (navHasGap()) {
             $("#dropdownIcon").css("display", "inline");
+            hoverDropdown(false);
             $("#navContainer>nav").css("display", "none");
         } else {
             $("#dropdownIcon").css("display", "none");
@@ -73,5 +65,17 @@ $(document).ready(function () {
         $("main").css("padding-right", 100 + "px");
         $("main").css("margin-bottom", -100 + "px");
         $("main").css("padding-bottom", 100 + "px");
+    }
+
+    function hoverDropdown(isHovered){
+        console.log(isHovered);
+        if (isHovered.type == "mouseenter") {
+            $("#navContainer>nav").css("display", "grid");
+            $("#navContainer>nav").addClass("dropdownExpanded");
+            $(".dropdownExpanded").mouseleave(hoverDropdown);
+        } else {
+            $("#navContainer>nav").css("display", "none");
+            $("#navContainer>nav").removeClass("dropdownExpanded");
+        }
     }
 });

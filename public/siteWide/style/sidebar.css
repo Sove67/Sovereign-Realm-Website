@@ -1,28 +1,20 @@
 @media screen {
     #sidebar {
+        --iconSize: 96px;
+        --sidebarPadding: 10px;
+        padding: var(--sidebarPadding);
         background-color: #332D3F;
+        gap: 10px;
+        display: grid;
+        grid-template-rows: 100%;
+        grid-template-columns: 100%;
     }
 
-    #sidebar img {
-        height: auto;
-        width: auto;
-    }
-
-    #navChatSwapper {
-        border: none;
-        display: inline;
-    }
-
-    #navContainer .current {
-        background-color: #38cfad;
-    }
-
-    #navContainer nav a {
-        justify-self: center;
-        text-align: center;
-        width: 32px;
-        height: 32px;
-        padding: 10px;
+    #sidebar>button,
+    #sidebar a,
+    #dropdownIcon {
+        height: var(--iconSize);
+        width: var(--iconSize);
     }
 
     #dropdownIcon {
@@ -33,105 +25,87 @@
         transform: translate(-50%, -50%);
     }
 
+    #sidebar>button>img {
+        height: 100%;
+        width: 100%;
+    }
+
     .dropdownExpanded {
+        padding: var(--sidebarPadding);
         background-color: #332D3F;
         position: fixed;
         left: 0;
         top: 0;
     }
 
-    #profile {
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        grid-template-rows: auto 1.5em;
-        text-align: center;
-    }
-
-    #profile img {
-        justify-self: center;
-        display: inline-block;
-        max-height: 100%;
-        max-width: 100%;
-        height: auto;
-        width: auto;
-        border-radius: 50%;
-        border-style: solid;
-        border-color: grey;
-    }
-
-    #profile span {
-        width: 100%;
-        margin: auto;
-    }
-
     /* Landscape */
     @media not screen and (max-aspect-ratio: 1) {
-        :root {
-            --sidebarWidth: min(min(15vw, calc((100vh - 2 * 5vh) / 3)), 128px);
-        }
-
         body {
             position: fixed;
             display: grid;
-            grid-template-columns: var(--sidebarWidth) minmax(0, 1fr);
+            grid-template-columns: auto minmax(0, 1fr);
             grid-template-rows: 100%;
         }
 
         #sidebar {
-            height: 100%;
-            width: var(--sidebarWidth);
-            display: grid;
-            justify-content: center;
-            align-content: center;
+            height: calc(100vh - var(--sidebarPadding)*2);
             grid-template-columns: 100%;
-            grid-template-rows: var(--sidebarWidth) minmax(0, 1fr) var(--sidebarWidth);
+            grid-template-rows: minmax(var(--iconSize), auto) minmax(var(--iconSize), 1fr) minmax(var(--iconSize), auto);
+        }
+
+        #navContainer {
+            width: var(--iconSize);
         }
 
         #navContainer nav {
-            display: grid;
-            align-content: space-around;
-            justify-content: center;
             height: 100%;
+            display: grid;
+            grid-gap: 10px;
+            align-content: center;
+            justify-content: center;
+            grid-template-columns: 100%;
+            grid-template-rows: auto auto auto auto auto;
         }
 
         .dropdownExpanded {
-            width: var(--sidebarWidth) !important;
-            height: 100vh !important;
+            align-content: space-around !important;
+            width: var(--iconSize) !important;
+            height: calc(100vh - var(--sidebarPadding)*2) !important;
         }
     }
 
     /* Portrait */
     @media screen and (max-aspect-ratio: 1) {
-        :root {
-            --sidebarHeight: min(calc((100vw - 2 * 5vw) / 3), 128px);
-        }
-
         body {
             position: fixed;
             display: grid;
-            grid-template-rows: var(--sidebarHeight) minmax(0, 1fr);
             grid-template-columns: 100%;
+            grid-template-rows: auto minmax(0, 1fr);
         }
 
         #sidebar {
-            height: var(--sidebarHeight);
-            width: 100%;
-            display: grid;
-            grid-template-rows: 100%;
-            grid-template-columns: var(--sidebarHeight) minmax(0, 1fr) var(--sidebarHeight);
+            width: calc(100% - var(--sidebarPadding)*2);
+            grid-template-columns: var(--iconSize) minmax(0, 1fr) var(--iconSize);
+        }
+
+        #navContainer {
+            height: var(--iconSize);
         }
 
         #navContainer nav {
             height: 100%;
+            width: 100%;
             display: grid;
+            grid-gap: 10px;
             align-content: center;
-            justify-content: space-around;
+            justify-content: center;
+            grid-template-columns: auto auto auto auto auto;
         }
 
         .dropdownExpanded {
-            width: 100vw !important;
-            height: var(--sidebarHeight) !important;
+            justify-content: space-around !important;
+            width: calc(100vw - var(--sidebarPadding)*2) !important;
+            height: var(--iconSize) !important;
         }
     }
 }

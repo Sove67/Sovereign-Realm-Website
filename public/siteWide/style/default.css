@@ -25,18 +25,12 @@
         width: auto;
     }
 
-    button,
-    a {
-        background-color: #b4ded5;
-        padding: 10px;
-        border-radius: 10px;
-        color: #332D3F;
-        text-decoration: none;
-    }
-
-    button:hover,
-    a:hover {
-        background-color: #38cfad;
-        text-decoration: none;
+    button {
+        background-color: transparent;
+        padding: 0;
+        height: auto;
+        width: auto;
+        border: none;
+        display: inline;
     }
 }

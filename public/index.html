@@ -13,7 +13,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <!---->
 
-
   <!-- Firebase 
     -update the version number as needed 
     -include only the Firebase features as you need 
@@ -34,46 +33,21 @@
 
   <!-- Add the entire Firebase JavaScript SDK (DEVELOPMENT ONLY) -->
   <script src="/__/firebase/8.0.0/firebase.js"></script>
-
   <script defer src="/__/firebase/init.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
   <!---->
-
 
   <!-- Custom CSS -->
   <link type="text/css" rel="stylesheet" href="siteWide/style/default.css" />
   <link type="text/css" rel="stylesheet" href="style/index.css" />
   <!---->
 
-
-  <!-- Import Site Wide Files
-    -Adapted From: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file?page=1&tab=votes#tab-top
+  <!-- Import Site Wide File Importer
+    Adapted From: https://stackoverflow.com/questions/8988855/include-another-html-file-in-a-html-file?page=1&tab=votes#tab-top
   -->
-  <script>
-    $(document).ready(function () {
-      var htmlImport = $('[import-html]');
-      jQuery.each(htmlImport, function () {
-        var file = 'siteWide/html/' + $(this).attr('id') + '.html';
-        $(this).load(file);
-      });
-      var cssImport = $('[import-css]');
-      jQuery.each(cssImport, function () {
-        var cssLink = $("<link>");
-        $("head").append(cssLink); //IE hack: append before setting href
-        cssLink.attr({
-          rel: "stylesheet",
-          type: "text/css",
-          href: 'siteWide/style/' + $(this).attr('id') + '.css'
-        });
-      });
-      var jsImport = $('[import-js]');
-      jQuery.each(jsImport, function () {
-        var scriptPath = 'siteWide/script/' + $(this).attr('id') + '.js';
-        $("body").append($.getScript(scriptPath));
-      });
-    });
-  </script>
+  <script src="siteWide/script/siteWideLoader.js"></script>
   <!---->
+
 </head>
 
 <body>

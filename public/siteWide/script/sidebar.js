@@ -11,8 +11,6 @@ $(document).ready(function () {
 
     // Adaptive Listeners
     window.addEventListener("resize", onResize);
-    $("#dropdownIcon").mouseenter(hoverDropdown); //mouseleave is declared alongside the .addClass point.
-
 
     function hideScrollBar() {
         $("main").css("overflow", "scroll");
@@ -24,12 +22,28 @@ $(document).ready(function () {
 
     function onResize() {
         if (navHasGap()) {
-            hoverDropdown(false); //Closes hover menu
-            $("#dropdownIcon").css("display", "inline");
-            $("#navContainer>nav").css("display", "none");
-        } else {
+            hoverDropdown(false);
             $("#dropdownIcon").css("display", "none");
             $("#navContainer>nav").css("display", "grid");
+
+            $('#dropdownIcon').off("click", hoverDropdown.bind(this, false));
+            $('main').off("click", hoverDropdown.bind(this, false));
+            $("#dropdownIcon").off("mouseenter", hoverDropdown.bind(this, true));
+            $(".dropdownExpanded").off("mouseleave", hoverDropdown.bind(this, false));
+        } else {
+            hoverDropdown(false);
+            $("#dropdownIcon").css("display", "inline");
+            $("#navContainer>nav").css("display", "none");
+
+            console.log("A");
+            $('#dropdownIcon').on("click", function(){console.log("AA")});
+            $('main').on("click", function(){console.log("bb")});
+            $("#dropdownIcon").on("mouseenter", function(){console.log("cc")});
+            $(".dropdownExpanded").on("mouseleave", function(){console.log("dd")});
+            $('#dropdownIcon').on("click", hoverDropdown.bind(this, true));
+            $('main').on("click", hoverDropdown.bind(this, false));
+            $("#dropdownIcon").on("mouseenter", hoverDropdown.bind(this, true));
+            $(".dropdownExpanded").on("mouseleave", hoverDropdown.bind(this, false));
         }
         if (isPortrait.matches) {
             sidebarSize = parseFloat($("#sidebar").css("height"));
@@ -57,35 +71,31 @@ $(document).ready(function () {
         let containerSize = parseFloat($("#profile").css("width"));
         let ratio = containerSize / textWidth;
 
-        $("#profile>span").css("font-size", ratio +"em");
+        $("#profile>span").css("font-size", ratio + "em");
     };
 
     function navHasGap() {
-        let itemCount = $('#navContainer nav>a').filter(function () { 
-            return this.style.display != 'none' 
+        let itemCount = $('#navContainer nav>a').filter(function () {
+            return this.style.display != 'none'
         }).length;
-        let gap = parseFloat($("#sidebar").css("--sidebarPadding"));
-        let interiorContent = itemSize * itemCount + gap * (itemCount - 1);
+        let minGap = parseFloat($("#sidebar").css("--sidebarPadding"));
+        let interiorContent = itemSize * itemCount + minGap * (itemCount - 1);
         if (isPortrait.matches) {
             let columnString = $("#sidebar").css("grid-template-columns");
             let secondColumnSize = parseFloat(columnString.split(" ")[1]);
-            return secondColumnSize - interiorContent < 0;
+            return secondColumnSize - interiorContent >= 0;
         } else {
             let rowString = $("#sidebar").css("grid-template-rows");
             let secondRowSize = parseFloat(rowString.split(" ")[1]);
-            return secondRowSize - interiorContent < 0;
+            return secondRowSize - interiorContent >= 0;
         }
     }
 
-    function hoverDropdown(isHovered) {
-        if (isHovered.type == "mouseenter") {
+    function hoverDropdown(display) {
+        if (display) {
             $("#navContainer>nav").css("display", "grid");
             $("#navContainer>nav").addClass("dropdownExpanded");
-            $(".dropdownExpanded").mouseleave(hoverDropdown);
-            $(".dropdownExpanded").mouseleave(function(){
-            });
         } else {
-            $(".dropdownExpanded").off('mouseleave');
             $("#navContainer>nav").css("display", "none");
             $("#navContainer>nav").removeClass("dropdownExpanded");
         }

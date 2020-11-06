@@ -6,10 +6,6 @@
 
     /* Landscape */
     @media not screen and (max-aspect-ratio: 1) {
-        main {
-            grid-column: 2/3;
-        }
-
         #welcome {
             display: grid;
             grid-template-columns: 66% 33%;

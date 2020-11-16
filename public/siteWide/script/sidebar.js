@@ -29,21 +29,18 @@ $(document).ready(function () {
             $('#dropdownIcon').off("click", hoverDropdown.bind(this, false));
             $('main').off("click", hoverDropdown.bind(this, false));
             $("#dropdownIcon").off("mouseenter", hoverDropdown.bind(this, true));
+            
             $(".dropdownExpanded").off("mouseleave", hoverDropdown.bind(this, false));
         } else {
             hoverDropdown(false);
             $("#dropdownIcon").css("display", "inline");
             $("#navContainer>nav").css("display", "none");
 
-            console.log("A");
-            $('#dropdownIcon').on("click", function(){console.log("AA")});
-            $('main').on("click", function(){console.log("bb")});
-            $("#dropdownIcon").on("mouseenter", function(){console.log("cc")});
-            $(".dropdownExpanded").on("mouseleave", function(){console.log("dd")});
             $('#dropdownIcon').on("click", hoverDropdown.bind(this, true));
             $('main').on("click", hoverDropdown.bind(this, false));
             $("#dropdownIcon").on("mouseenter", hoverDropdown.bind(this, true));
             $(".dropdownExpanded").on("mouseleave", hoverDropdown.bind(this, false));
+            $(".dropdownExpanded").on("mouseleave", function(){console.log("AAA")});
         }
         if (isPortrait.matches) {
             sidebarSize = parseFloat($("#sidebar").css("height"));

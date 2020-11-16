@@ -1,9 +1,4 @@
 @media screen {
-    .contentType>* {
-        display: list-item;
-        list-style: none;
-    }
-
     /* Landscape */
     @media not screen and (max-aspect-ratio: 1) {
         #welcome {

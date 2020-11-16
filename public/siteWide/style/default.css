@@ -1,20 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch');
+
+@import url('https://fonts.googleapis.com/css2?family=Turret+Road');
+
 @media screen {
+
     /* Global */
     body {
-        font-size: 20px;
-        padding: 0;
-        margin: 0;
-        font-family: fantasy;
         overflow: hidden;
         position: relative;
         height: 100vh;
         width: 100vw;
+        padding: 0;
+        margin: 0;
+
+        background-color: #0C090F;
+        color: darkgray;
+        font-size: 20px;
+        font-family: "Chakra Petch";
+
     }
 
     main {
         overflow-y: scroll;
-        background-color: #332D3F;
-        color: #c8afd7;
+        background-color: inherit;
     }
 
     img {
@@ -25,12 +33,82 @@
         width: auto;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: "Turret Road";
+        text-transform: uppercase;
+        padding: 10px;
+        color: #A366FF;
+    }
+
+    a {
+        font-family: "Chakra Petch";
+        text-transform: none;
+    }
+
+    h2,
+    h4,
+    h6 {
+        color: #38CFAD;
+    }
+
+    .container {
+        border: 25px solid transparent;
+        border-image: url(/resources/border.png) 49 stretch;
+        margin: 10px;
+    }
+
     button {
-        background-color: transparent;
-        padding: 0;
+        display: block;
         height: auto;
         width: auto;
+        margin-left: auto;
+        margin-right: 0;
+        padding-top: 5px;
+        padding-left: 30px;
+        padding-right: 30px;
+        font-family: "Turret Road";
+        background-color: transparent;
+        border: 3px solid #A366FF;
+        color: #A366FF;
+        font-size: 2em;
+    }
+
+    button:hover {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-left-width: 23px;
+        border-right-width: 23px;
+    }
+
+    button:active {
+        background-color: #A366FF23;
+    }
+
+    hr {
         border: none;
-        display: inline;
+        height: 1.1px;
+        background-color: #A366FF;
+        padding-left: 23px;
+        margin-left: -23px;
+        padding-right: 23px;
+        margin-right: -23px;
+    }
+
+    hr.vertical {
+        border: none;
+        height: 100%;
+        width: 1.1px;
+        background-color: #A366FF;
+        padding: 0;
+        margin: 0;
+        padding-top: 23px;
+        margin-top: -23px;
+        padding-bottom: 23px;
+        margin-bottom: -23px;
     }
 }

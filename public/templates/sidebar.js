@@ -3,6 +3,18 @@ $(document).ready(function () {
     let itemSize = $("#navContainer a").outerWidth();
     let sidebarSize;
 
+    console.log("AA");
+    $.ajax({
+        url: "/test",
+        dataType: "text",
+        type: "GET",
+        success: function (data) {
+            console.log("SUCCESS HTML:", data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log("ERROR:", jqXHR, textStatus, errorThrown);
+        }
+    });
 
     // Initial Calls
     hideScrollBar();

@@ -1,22 +1,23 @@
 $(document).ready(function () {
-    var htmlImport = $('[import-html]');
+    let path = "templates/";
+    let htmlImport = $('[import-html]');
     jQuery.each(htmlImport, function () {
-        var file = 'siteWide/html/' + $(this).attr('id') + '.html';
+        let file = path + $(this).attr('id') + '.html';
         $(this).load(file);
     });
-    var cssImport = $('[import-css]');
+    let cssImport = $('[import-css]');
     jQuery.each(cssImport, function () {
-        var cssLink = $("<link>");
+        let cssLink = $("<link>");
         $("head").append(cssLink); //IE hack: append before setting href
         cssLink.attr({
             rel: "stylesheet",
             type: "text/css",
-            href: 'siteWide/style/' + $(this).attr('id') + '.css'
+            href: path + $(this).attr('id') + '.css'
         });
     });
-    var jsImport = $('[import-js]');
+    let jsImport = $('[import-js]');
     jQuery.each(jsImport, function () {
-        var scriptPath = 'siteWide/script/' + $(this).attr('id') + '.js';
+        let scriptPath = path + $(this).attr('id') + '.js';
         $("body").append($.getScript(scriptPath));
     });
 });

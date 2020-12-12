@@ -2,6 +2,12 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Turret+Road');
 
+:root {
+    /* When this is changed, also change the landscape & portrait queries in all css
+    files.*/
+    --resolutionRatioPoint: 1.2;
+}
+
 @media screen {
 
     /* Global */
@@ -58,7 +64,7 @@
 
     .container {
         border: 25px solid transparent;
-        border-image: url(/resources/border.png) 49 stretch;
+        border-image: url(/assets/border.png) 49 stretch;
         margin: 10px;
     }
 

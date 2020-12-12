@@ -62,23 +62,23 @@
     }
 
     .homeIcon{
-        mask: url(/resources/Icons/home.svg);
+        mask: url(/assets/Icons/home.svg);
     }
 
     .projectIcon{
-        mask: url(/resources/Icons/video.svg);
+        mask: url(/assets/Icons/video.svg);
     }
 
     .patreonIcon{
-        mask: url(/resources/Icons/aristocrat.svg);
+        mask: url(/assets/Icons/aristocrat.svg);
     }
 
     .shopIcon{
-        mask: url(/resources/Icons/shop-dollar.svg);
+        mask: url(/assets/Icons/shop-dollar.svg);
     }
 
     .FAQIcon{
-        mask: url(/resources/Icons/info.svg);
+        mask: url(/assets/Icons/info.svg);
     }
 
     .icon {
@@ -90,7 +90,7 @@
     }
 
     /* Landscape */
-    @media not screen and (max-aspect-ratio: 1) {
+    @media not screen and (max-aspect-ratio: 1.2) {
         body {
             position: fixed;
             display: grid;
@@ -126,7 +126,7 @@
     }
 
     /* Portrait */
-    @media screen and (max-aspect-ratio: 1) {
+    @media screen and (max-aspect-ratio: 1.2) {
         body {
             position: fixed;
             display: grid;

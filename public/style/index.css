@@ -1,6 +1,6 @@
 @media screen {
     /* Landscape */
-    @media not screen and (max-aspect-ratio: 1) {
+    @media not screen and (max-aspect-ratio: 1.2) {
         #welcome {
             display: grid;
             grid-template-columns: 66% 33%;
@@ -33,7 +33,7 @@
     }
 
     /* Portrait */
-    @media screen and (max-aspect-ratio: 1) {
+    @media screen and (max-aspect-ratio: 1.2) {
         #content {
             display: grid;
             grid-template-columns: 33% 33% 33%;

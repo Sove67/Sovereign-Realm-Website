@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let isPortrait = window.matchMedia("(max-aspect-ratio: 1)");
+    let isPortrait = window.matchMedia("(max-aspect-ratio: " + getComputedStyle(document.body).getPropertyValue('--resolutionRatioPoint') + ")");
     let itemSize = $("#navContainer a").outerWidth();
     let sidebarSize;
 
